@@ -1,0 +1,8 @@
+{
+  "name": "nst-prototype",
+  "version": "0.0.1",
+  "main": "index.js",
+  "repository": "https://github.com/cedjud/nst-prototype.git",
+  "author": "Cedric Jud <cedricsjud@gmail.com>",
+  "license": "Apache-2.0"
+}
