@@ -8,7 +8,7 @@ class App extends Component {
     return (
       <div>
         <Button>
-        I am a super duper button.
+          I am an even better button.
         </Button>
       </div>
     );
