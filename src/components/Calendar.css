@@ -1,0 +1,23 @@
+ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.calendar {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.day {
+  text-align: center;
+  border: 1px solid gray;
+  padding: 2rem 0;
+  flex-basis: 14%;
+  flex-grow: 0;
+  flex-shrink: 0;
+}
+
+.day--available {
+  background-color: teal;
+}

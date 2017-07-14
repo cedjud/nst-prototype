@@ -6,6 +6,8 @@
     "react-scripts": "1.0.10"
   },
   "dependencies": {
+    "classnames": "^2.2.5",
+    "moment": "^2.18.1",
     "office-ui-fabric-react": "^4.14.1",
     "react": "^15.6.1",
     "react-dom": "^15.6.1",
