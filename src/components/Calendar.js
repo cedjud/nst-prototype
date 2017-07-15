@@ -10,7 +10,7 @@ class Calendar extends Component {
     this.state = {
       days: [],
       availableDays: [],
-      weeksInMonth: [],
+      monthWeeks: {},
     };
 
     this.buildCalendar = this.buildCalendar.bind(this);
@@ -29,6 +29,7 @@ class Calendar extends Component {
     const daysInMonth = moment([year, month]).daysInMonth();
 
     let days = [];
+    let monthWeeks = {};
 
     for (let i = 1; i <= daysInMonth; i += 1){
 
@@ -41,11 +42,17 @@ class Calendar extends Component {
         isAvailable: false,
       }
 
+      if (!(moment([year, month, i]).isoWeek() in monthWeeks)) {
+        monthWeeks[moment([year, month, i]).isoWeek()] = [];
+      }
+      monthWeeks[moment([year, month, i]).isoWeek()].push(currentDay);
+
       days.push(currentDay);
     }
 
     this.setState({
       days: days,
+      monthWeeks: monthWeeks,
     });
   }
 
@@ -71,7 +78,7 @@ class Calendar extends Component {
   }
 
   render(){
-    const { days } = this.state;
+    const { days, monthWeeks } = this.state;
 
     let daysElements = days.map(day => {
       const isAvailableDay = this.checkDayAvailability(day.dayOfMonthNumber);
