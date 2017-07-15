@@ -4,9 +4,17 @@ ul {
   padding: 0;
 }
 
-.calendar {
-  /*display: flex;*/
+.calendar__header {
+  text-align: center;
+}
+.calendar ul {
+  display: flex;
+
   /*flex-wrap: wrap;*/
+}
+
+.calendar ul:first-child {
+  justify-content: flex-end;
 }
 
 .day {

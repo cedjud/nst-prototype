@@ -79,6 +79,37 @@ class Calendar extends Component {
 
   render(){
     const { days, monthWeeks } = this.state;
+    let monthWeeksIndexes = Object.keys(monthWeeks);
+    let monthWeeksElements = monthWeeksIndexes.map(week => {
+      return (
+        <ul>
+          { monthWeeks[week].map(day => {
+            const isAvailableDay = this.checkDayAvailability(day.dayOfMonthNumber);
+            let classnames = classNames({
+              'day': true,
+              'day--available': isAvailableDay,
+              'day--last-of-week': day.dayOfWeekNumber === 7,
+              'day--first-of-week': day.dayOfWeekNumber === 1,
+            });
+            return (
+              <li
+                className={classnames}
+                key={day.dayOfMonthNumber}
+                onClick={() =>
+                  this.setDayAvailability(day.dayOfMonthNumber, day.dateISO)
+                }
+                >
+                <span className="day__number">{day.dayOfMonthNumber}</span>
+                <br />
+                <span className="day__string">{day.dayOfWeekString}</span>
+              </li>
+              )
+            })
+          }
+        </ul>)
+    });
+
+    console.log(monthWeeksElements);
 
     let daysElements = days.map(day => {
       const isAvailableDay = this.checkDayAvailability(day.dayOfMonthNumber);
@@ -107,7 +138,8 @@ class Calendar extends Component {
       <div className="calendar__container">
         <h2 className="calendar__header">{moment().format('MMMM')}</h2>
         <ul className="calendar">
-          {daysElements}
+          {/* {daysElements} */}
+          {monthWeeksElements}
         </ul>
       </div>
     )
