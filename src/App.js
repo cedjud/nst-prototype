@@ -1,7 +1,10 @@
 import React, { Component } from 'react';
+import fire from './fire.js'
 import Calendar from './components/Calendar';
 import './App.css';
 import { Button } from 'office-ui-fabric-react/lib/Button';
+
+console.log(fire);
 
 const users = ['Alice', 'Bob', 'Charlie'];
 
