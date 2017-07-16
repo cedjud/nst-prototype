@@ -45,6 +45,7 @@ class App extends Component {
       user: false,
     };
     this.setUser = this.setUser.bind(this);
+    this.firebaseTest = this.firebaseTest.bind(this);
   }
 
   setUser(user){
@@ -53,9 +54,15 @@ class App extends Component {
     });
   }
 
+  firebaseTest() {
+    console.log('test');
+    fire.database().ref('massages').push( `let's try another message` );
+  }
+
   render() {
     return (
       <div>
+        <button onClick={this.firebaseTest}>click me!</button>
         {/* <UserSelector users={users} onUserSelect={this.setUser}/> */}
         <br />
         <Calendar/>
