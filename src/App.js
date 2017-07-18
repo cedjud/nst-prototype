@@ -4,8 +4,6 @@ import Calendar from './components/Calendar';
 import './App.css';
 import { Button } from 'office-ui-fabric-react/lib/Button';
 
-console.log(fire);
-
 const users = ['Alice', 'Bob', 'Charlie'];
 
 class UserSelector extends Component {
@@ -56,7 +54,7 @@ class App extends Component {
   render() {
     return (
       <div>
-        {/* <UserSelector users={users} onUserSelect={this.setUser}/> */}
+        <UserSelector users={users} onUserSelect={this.setUser}/>
         <br />
         <Calendar/>
       </div>
