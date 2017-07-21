@@ -15,13 +15,16 @@ const fakeAuth = {
 
 const Dashboard = () => <h1>Welcome to the App!</h1>;
 
+const Register = () => <h1>Register</h1>;
+
 class App extends Component {
   render() {
     return (
       <Router>
         <div>
           <Route exact path="/" component={Login} />
-          <Route exact path="/dashboard" component={Dashboard} />
+          <Route path="/dashboard" component={Dashboard} />
+          <Route path="/register" component={Register} />
         </div>
       </Router>
     );
