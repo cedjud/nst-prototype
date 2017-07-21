@@ -1,0 +1,13 @@
+.registration {
+}
+
+.registration__wrapper {
+  max-width: 310px;
+  min-width: 310px;
+  margin: 0 auto;
+  height: 100%;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}

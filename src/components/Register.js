@@ -3,11 +3,11 @@ import {
   Segment,
   Button,
   Header,
-  Divider,
   Form
 } from 'semantic-ui-react';
+
 import { Link } from 'react-router-dom'
-import './Login.css';
+import './Register.css';
 
 class Register extends Component {
   constructor(props){
@@ -15,23 +15,39 @@ class Register extends Component {
     this.state = {
       username: '',
       password: '',
-      passwordsMatch: false,
+      repeatPassword: '',
     }
 
     this.handleSubmit = this.handleSubmit.bind(this);
+    this.handleInputChange = this.handleInputChange.bind(this);
   }
 
-  handleSubmit(){
-    
+  handleSubmit(e){
+    e.preventDefault();
+    const { username, password, repeatPassword } = this.state;
+
+    if ( password === '' ){
+      console.log('password is empty');
+    } else if (password !== repeatPassword ){
+      console.log('passwords dont match');
+    } else {
+      console.log('registered!!');
+    }
+  }
+
+  handleInputChange(e){
+    this.setState({
+      [e.target.name]: e.target.value,
+    });
   }
 
   render() {
     return (
-      <div className="register__wrapper">
+      <div className="registration__wrapper">
         <Segment>
           <Header textAlign="center">Register</Header>
 
-          <Form>
+          <Form onSubmit={this.handleSubmit}>
 
             <Form.Field>
               <label
@@ -43,6 +59,8 @@ class Register extends Component {
                 id="username"
                 type="email"
                 name="username"
+                onChange={this.handleInputChange}
+                value={this.state.username}
                 placeholder='your email' />
             </Form.Field>
 
@@ -56,6 +74,8 @@ class Register extends Component {
                 id="password"
                 type="password"
                 name="password"
+                onChange={this.handleInputChange}
+                value={this.state.password}
                 placeholder='your password' />
             </Form.Field>
 
@@ -66,18 +86,18 @@ class Register extends Component {
                 repeat password
               </label>
               <input
-                id="repeatePassword"
+                id="repeatPassword"
                 type="password"
                 name="repeatPassword"
+                onChange={this.handleInputChange}
+                value={this.state.repeatPassword}
                 placeholder='repeat password' />
             </Form.Field>
 
             <Button
               primary
               fluid={true}
-              type={this.handleSubmit}
-              // as={Link}
-              // to='/dashboard'
+              type="submit"
             >
               Register
             </Button>
