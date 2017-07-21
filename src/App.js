@@ -6,6 +6,7 @@ import {
 } from 'react-router-dom';
 
 import Login from './components/Login';
+import Register from './components/Register';
 
 import './App.css';
 
@@ -15,7 +16,7 @@ const fakeAuth = {
 
 const Dashboard = () => <h1>Welcome to the App!</h1>;
 
-const Register = () => <h1>Register</h1>;
+// const Register = () => <h1>Register</h1>;
 
 class App extends Component {
   render() {
