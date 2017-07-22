@@ -33,8 +33,16 @@ class Register extends Component {
     console.log(username, password);
     if ( password === '' ){
       console.log('password is empty');
+      this.setState({
+        isError: true,
+        errorMessage: 'password is empty',
+      });
     } else if (password !== repeatPassword ){
       console.log('passwords dont match');
+      this.setState({
+        isError: true,
+        errorMessage: 'passwords dont match',
+      });
     } else {
       fire.auth().createUserWithEmailAndPassword(username, password)
         .catch((error) => {

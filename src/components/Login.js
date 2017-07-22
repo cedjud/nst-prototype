@@ -4,9 +4,11 @@ import {
   Button,
   Header,
   Divider,
-  Form
+  Form,
+  Icon
 } from 'semantic-ui-react';
-import { Link } from 'react-router-dom'
+import fire from '../fire.js';
+import { Redirect, Link } from 'react-router-dom';
 import './Login.css';
 
 class Login extends Component {
@@ -15,6 +17,9 @@ class Login extends Component {
     this.state = {
       username: '',
       password: '',
+      isError: false,
+      errorMessage: '',
+      redirect: false
     }
 
     this.handleSubmit = this.handleSubmit.bind(this);
@@ -24,11 +29,19 @@ class Login extends Component {
   handleSubmit(e){
     e.preventDefault();
     const { username, password } = this.state;
-    console.log(e.target.username.value, e.target.password.value);
     if ( password === '' || username === ''){
-      console.log('password or username is empty');
+      this.setState({
+        isError: true,
+        errorMessage: 'Password or username is empty',
+      })
     } else {
-      console.log('logged in!!');
+      fire.auth().signInWithEmailAndPassword(username, password)
+      .catch((error) => {
+        this.setState({
+          isError: true,
+          errorMessage: error.message
+        })
+      })
     }
   }
 
@@ -44,6 +57,14 @@ class Login extends Component {
         <Segment>
           <Header textAlign="center">Sign in</Header>
           <Form onSubmit={this.handleSubmit}>
+            {this.state.isError ?
+              <Header as="h3" color="red">
+                <Icon name="close"></Icon>
+                <Header.Content>
+                  {this.state.errorMessage}
+                </Header.Content>
+              </Header>
+            : null }
             <Form.Field>
               <label
                 htmlFor="username"
@@ -77,10 +98,9 @@ class Login extends Component {
             <Button
               primary
               fluid={true}
+              content="Sign in"
               type="submit"
-            >
-              Sign in
-            </Button>
+            />
           </Form>
           <Divider horizontal>Or</Divider>
           <Button
