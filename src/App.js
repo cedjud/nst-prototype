@@ -9,6 +9,7 @@ import { Button } from 'semantic-ui-react';
 import fire from './fire.js';
 import Login from './components/Login';
 import Register from './components/Register';
+import Dashboard from './components/Dashboard';
 
 import './App.css';
 
@@ -17,7 +18,7 @@ const LocalAuth = {
   user: {}
 }
 
-const Dashboard = (props) => {
+/* const Dashboard = (props) => {
   return (
     <div>
       <h1>Welcome to the App!</h1>
@@ -26,7 +27,7 @@ const Dashboard = (props) => {
       <Button content="Sign out" onClick={() => fire.auth().signOut()} />
     </div>
   )
-};
+}; */
 
 class App extends Component {
   constructor(props){
